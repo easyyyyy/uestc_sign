@@ -1,2 +1,7 @@
-0 8 */1 * * /usr/local/bin/node /root/uestc_sign/sign.js >> /root/uestc_sign/logs/sign.log 2>&1
-* * * * * /usr/local/bin/node /root/uestc_sign/test.js >> /root/uestc_sign/logs/test.log 2>&1
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+HOME=/
+
+0 8 */1 * * root /usr/local/bin/node /root/uestc_sign/sign.js >> /root/uestc_sign/logs/sign.log 2>&1
+* * * * * root /usr/local/bin/node /root/uestc_sign/test.js >> /root/uestc_sign/logs/test.log 2>&1
