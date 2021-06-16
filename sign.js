@@ -1,4 +1,5 @@
 const request = require('./axios.js');
+const { pushPlusNotify } = require('./sendNotify.js');
 
 (async function() {
   const url = 'http://jzsz.uestc.edu.cn/wxvacation/monitorRegister';
@@ -22,5 +23,9 @@ const request = require('./axios.js');
   console.log(res)
   if(res.code == 0) {
     console.log('==========签到成功============')
+    await pushPlusNotify('签到成功', '123')
+  } else if (res.code == 40001) {
+    console.log('===============登录失效，请重新登录================')
+    await pushPlusNotify('cookie失效', 'cookie过期，请重新获取cookie填入cooke.js')
   }
 })()
