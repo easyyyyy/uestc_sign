@@ -18,4 +18,6 @@ RUN set -ex \
 
 WORKDIR /uestc_sign
 
+ENTRYPOINT ["tail", "-f", "/dev/null"]
+
 CMD [ "crond" ]
