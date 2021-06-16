@@ -1,4 +1,4 @@
 module.exports = {
-  cookie: 'JSESSIONID=60ee3117-9499-4f8e-8ab9-f14b632d8833',
-  PUSH_PLUS_TOKEN: '06234d93657643968a19079a2a98837a'
+  cookie: '', // 填写fiddler获取的cookie
+  PUSH_PLUS_TOKEN: '' // 填写pushplus的token(选填)
 }
