@@ -15,7 +15,7 @@ RUN set -ex \
     && npm config set registry https://registry.npm.taobao.org \
     && npm install \
     && cp /uestc_sign/docker/docker_entrypoint.sh /usr/local/bin \
-    && chome +x /usr/local/bin/docker_entrypoint.sh
+    && chmod +x /usr/local/bin/docker_entrypoint.sh
 
 WORKDIR /uestc_sign
 
