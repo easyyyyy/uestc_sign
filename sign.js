@@ -9,7 +9,7 @@ const { pushPlusNotify } = require('./sendNotify.js');
       "remark": "",
       "healthInfo": "正常",
       "isContactWuhan": process.env.IS_CONTACT_WUHAN || 0,
-      "isFever": process.env.CURRENT_ADDRESS || 0,
+      "isFever": process.env.IS_FEVER || 0,
       "isInSchool": process.env.IS_IN_SCHOOL || 0,
       "isLeaveChengdu": process.env.IS_LEAVE_CHENGDU || 1,
       "isSymptom": 0,

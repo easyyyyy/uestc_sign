@@ -1,8 +1,6 @@
 const axios = require('axios')
 const { cookie } = require('./cookie.js')
 
-console.log(cookie)
-
 const instance = axios.create({
   withCredentials: true,
   headers: { 
