@@ -9,7 +9,7 @@ const { pushPlusNotify } = require('./sendNotify.js');
       "remark": "",
       "healthInfo": "正常",
       "isContactWuhan": process.env.IS_CONTACT_WUHAN || 0,
-      "isFever": process.env.IS_FEVER || 0,
+      "isFever": process.env.CURRENT_ADDRESS || 0,
       "isInSchool": process.env.IS_IN_SCHOOL || 0,
       "isLeaveChengdu": process.env.IS_LEAVE_CHENGDU || 1,
       "isSymptom": 0,
@@ -28,5 +28,8 @@ const { pushPlusNotify } = require('./sendNotify.js');
   } else if (res.code == 40001) {
     console.log('===============登录失效，请重新登录================')
     await pushPlusNotify('cookie失效', 'cookie过期，请重新获取cookie填入cooke.js')
+  } else {
+    console.log('=============其他错误================')
+    await pushPlusNotify('其他错误', JSON.stringify(res))
   }
 })()
