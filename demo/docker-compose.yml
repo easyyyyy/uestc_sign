@@ -1,0 +1,7 @@
+uestc_sign:
+  image: 
+  container_name: uestc_sign
+  environment:
+    - COOKIE=
+    #PUSHPLUS
+    - PUSH_PLUS_TOKEN=

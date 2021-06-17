@@ -1,3 +1,4 @@
+#!/bin/sh
 set -e
 
 crontabListFile="/uestc_sign/docker/crontab_list.sh"
