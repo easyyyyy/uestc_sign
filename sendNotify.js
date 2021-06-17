@@ -2,6 +2,7 @@ const { PUSH_PLUS_TOKEN } = require('./cookie.js')
 const request = require('./axios.js');
 
 function pushPlusNotify(title, content) {
+  console.log(PUSH_PLUS_TOKEN)
   return new Promise(async resolve => {
     if (PUSH_PLUS_TOKEN) {
       content = content.replace(/[\n\r]/g, '<br>');

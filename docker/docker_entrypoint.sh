@@ -6,7 +6,6 @@ if [ -n "$1" ]; then
   run_cmd=$1
 fi
 
-
 echo "------------------------------------------------执行定时任务任务shell脚本------------------------------------------------"
 #测试
 # sh /jd_docker/docker/default_task.sh "$ENABLE_BOT_COMMAND" "$run_cmd"
