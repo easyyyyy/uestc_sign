@@ -1,7 +1,11 @@
 uestc_sign:
   image: 
   container_name: uestc_sign
+  restart: always
+  volumes:
+    - ./logs:/uestc_sign/logs
   environment:
+    - REPO_URL=https://gitee.com/easyyyyy/uestc_sign.git
     - COOKIE=
     #PUSHPLUS
     - PUSH_PLUS_TOKEN=

@@ -17,7 +17,7 @@
   ```
 - 运行
   ```sh
-  forever start -l /root/uestc_sign/logs/sign.log -e /root/uestc_sign/logs/sign_err.log index.js
+  forever start -l /root/uestc_sign/logs/sign.log index.js
   ```
 
 ### crontab定时任务（linux用户）
