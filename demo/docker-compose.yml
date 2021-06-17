@@ -1,5 +1,5 @@
 uestc_sign:
-  image: 
+  image: easy12385/uestc_sign
   container_name: uestc_sign
   restart: always
   volumes:
