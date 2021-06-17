@@ -10,13 +10,15 @@ RUN set -ex \
     && rm -rf /var/cache/apk/* \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && cd /root \
     && git clone https://gitee.com/easyyyyy/uestc_sign.git \
     && cd uestc_sign \
     && npm config set registry https://registry.npm.taobao.org \
     && npm install \
-    && cp /root/uestc_sign/cronfile /etc/crontab
+    && cp /uestc_sign/docker/docker_entrypoint.sh /usr/local/bin \
+    && chome +x /usr/local/bin/docker_entrypoint.sh
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+WORKDIR /uestc_sign
+
+ENTRYPOINT ["docker_entrypoint.sh"]
 
 CMD [ "crond" ]
