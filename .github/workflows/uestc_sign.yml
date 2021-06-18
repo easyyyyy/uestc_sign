@@ -1,0 +1,18 @@
+## baiduPush.yml
+name: 'uestc_sign'
+ 
+on:
+  push:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  uestc_sign:
+    runs-on: easy12385/uestc_sign
+    steps:
+      - run: cd /uestc_sign
+      - run: node sign.js
+        env:
+          COOKIE: ${{secrets.UESTC_SIGN_COOKIE}}
+          PUSH_PLUS: ${{secrets.PUSH_PLUS_TOKEN}}
+
