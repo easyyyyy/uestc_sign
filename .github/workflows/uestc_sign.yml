@@ -1,13 +1,1 @@
-## baiduPush.yml
-name: 'uestc_sign'
- 
-on:
-  push:
-  schedule:
-    - cron: '*/5 * * * *'
 
-jobs:
-  uestc_sign:
-    runs-on: easy12385/uestc_sign
-    steps:
-      - run: echo "ok"
