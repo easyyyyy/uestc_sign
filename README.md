@@ -1,77 +1,20 @@
 # UESTC学生情况报送签到脚本
 
-*UPDATE：发布了docker镜像*
+**2021.6.19更新：添加了github actions**
 
-Docker安装 
+**2021.6.17更新：添加了docker**
 
-- 国内一键安装 `sudo curl -sSL https://get.daocloud.io/docker | sh`
-- 国外一键安装 `sudo curl -sSL get.docker.com | sh`
-- 北京外国语大学开源软件镜像站 `https://mirrors.bfsu.edu.cn/help/docker-ce/`
+**如果有问题，欢迎提Issues**
 
+**如果本项目对你有帮助，就点一个`Star`吧QAQ**
 
-docker-compose 安装
+## 简介
 
-```sh
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
-`Ubuntu`用户快速安装`docker-compose`
-```sh
-sudo apt-get update && sudo apt-get install -y python3-pip curl vim git moreutils
-pip3 install --upgrade pip
-pip install docker-compose
-```
+- UESTC学生情况报送自动填报
+- 每天0：05触发github actions，执行有延迟
+- 填报结果会通过推送加推送到微信
 
-通过`docker-compose version`查看`docker-compose`版本，确认是否安装成功。
-
-## 食用方法
-
-- PC版微信打开uestc学生情况小程序抓包，将cookie填入`docker-compose.yml`对应环境变量`COOKIE`中
-
-- （选做）进入 [推送加官网](https://pushplus.hxtrip.com)，获取token填入环境变量`PUSH_PLUS_TOKEN`
-
-- 根据实际情况填写填报信息
-
-- 进入`demo`目录，启动docker容器
-
-  ```sh
-  cd demo
-  docker-componse up -d
-  ```
-
-demo/docker-compose.yml
-
-```yml
-uestc_sign:
-  image: easy12385/uestc_sign
-  container_name: uestc_sign
-  restart: always
-  volumes:
-    - ./logs:/uestc_sign/logs
-  environment:
-    - REPO_URL=https://gitee.com/easyyyyy/uestc_sign.git
-    - COOKIE=
-    #PUSHPLUS
-    - PUSH_PLUS_TOKEN=
-    #填报信息，请如实填写
-    #当前地址
-    - CURRENT_ADDRESS=四川省成都市郫都区银杏大道
-    #是否接触武汉（0不是，1是）
-    - IS_CONTACT_WUHAN=0
-    #是否发烧
-    - IS_FEVER=0
-    #是否在校
-    - IS_IN_SCHOOL=1
-    #是否离开成都
-    - IS_LEAVE_CHENGDU=0
-    #当前体温
-    - TEMPERATURE=36°C~36.5°C
-    - PROVINCE=四川省
-    - CITY=成都市
-    - COUNTY=郫都区
-```
-
-### 相关教程
+## 相关链接
 
 - fiddler抓包教程参考
   + [fiddler抓包](https://juejin.cn/post/6844904042422861831)
@@ -79,12 +22,62 @@ uestc_sign:
 - pushplus token
   + https://pushplus.hxtrip.com/
 
+## 食用方法
 
+1. Forl仓库
+   
+   - 点击右上角的`Fork`，将项目Fork到自己的账号下
+   
+     ![](./img/1_1.png)
+   
+2. 获取环境变量
+   - PC版微信打开uestc学生情况小程序抓包，推荐使用**fiddler**抓包[fiddler抓包](https://juejin.cn/post/6844904042422861831)
+   
+   - 在 [推送加官网](https://pushplus.hxtrip.com/)注册，拿到token
+   
+     ![](./img/2_2.png)
+   
+3. 添加
+
+   - 回到自己的项目页面，依次点击`Settings`-->`Secrets`-->`New repository secret`
+
+   ![](./img/3_1.png)
+
+   - 将上一步抓包获取的cookie填入
+
+     ![](./img/3_2.png)
+
+   - 如需要微信通知，将推送加token填在这
+
+     ![](./img/3_3.png)
+
+   
+
+4. 启动Action
+
+   - 回到自己的项目页面，点击上方的`Actions`，允许启动 workflows
+
+   - 点击`Enable workflow`允许actions执行
+
+   - 可点击左侧`uestc_sign`，再点击`Run workflow`触发actions
+
+   - 也可以等待每日0：05自动上报
+
+   - 可查看执行日志
+
+     ![](./img/5_1.png)
+
+     ![](./img/5_2.png)
+
+     ![](./img/5_3.png)
 
 
 
 
 ## 	其他方法（不推荐）
+### docker
+[docker部署方法](./docker/README.md)
+
 
 ### node定时任务
 
