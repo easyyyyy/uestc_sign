@@ -21,7 +21,7 @@ jobs:
     - name: npm install and do sign
       env:
         COOKIE: ${{ secrets.UESTC_SIGN_COOKIE }}
-        PUSH_PLUS_TOKEN: ${{PUSH_PLUS_TOKEN}}
+        PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
       run: |
         npm install
         node sign.js
