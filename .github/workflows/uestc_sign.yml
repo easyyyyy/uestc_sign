@@ -1,1 +1,27 @@
+name: uestc_sign
 
+on: 
+  workflow_dispatch:
+  schedule: 
+      - cron: '*/10 * * * *'
+
+jobs:
+  one:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    # 使用 node:10
+    - name: use Node.js 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 10.x
+    # npm install
+    - name: npm install and do sign
+      env:
+        COOKIE: ${{ secrets.UESTC_SIGN_COOKIE }}
+        PUSH_PLUS_TOKEN: ${{PUSH_PLUS_TOKEN}}
+      run: |
+        npm install
+        node sign.js
