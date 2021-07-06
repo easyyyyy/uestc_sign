@@ -5,18 +5,11 @@ const { pushPlusNotify } = require('./sendNotify.js');
   const url = 'http://jzsz.uestc.edu.cn/wxvacation/monitorRegister';
   const params = {
     sendParams: {
-      "currentAddress": process.env.CURRENT_ADDRESS || "四川省成都市郫都区银杏大道",
-      "remark": "",
-      "healthInfo": "正常",
-      "isContactWuhan": process.env.IS_CONTACT_WUHAN || 0,
-      "isFever": process.env.IS_FEVER || 0,
-      "isInSchool": process.env.IS_IN_SCHOOL || 1,
-      "isLeaveChengdu": process.env.IS_LEAVE_CHENGDU || 0,
-      "isSymptom": 0,
-      "temperature": process.env.TEMPERATURE || "36°C~36.5°C",
-      "province": process.env.PROVINCE || "四川省",
-      "city": process.env.CITY || "成都市",
-      "county": process.env.COUNTY || "郫都区"
+      "healthCondition":"正常",
+      "todayMorningTemperature":"36°C~36.5°C",
+      "yesterdayEveningTemperature":"36°C~36.5°C",
+      "yesterdayMiddayTemperature":"36°C~36.5°C",
+      "location":"四川省成都市郫都区科化一路23号"
     }
   }
   console.log(params)
