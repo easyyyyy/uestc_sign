@@ -2,7 +2,7 @@ const request = require('./axios.js');
 const { pushPlusNotify } = require('./sendNotify.js');
 
 (async function() {
-  const url = 'http://jzsz.uestc.edu.cn/wxvacation/monitorRegister';
+  const url = 'http://jzsz.uestc.edu.cn/wxvacation/monitorRegisterForReturned';
   const params = {
     sendParams: {
       "healthCondition":"正常",
