@@ -14,8 +14,9 @@ const { cookie } = require('./cookie.js');
     }
   }
   const cookies = cookie.split(',')
-  const mesage = ''
-  cookies.forEach(async (item, index) => {
+  let mesage = ''
+  for(let index = 0; index<cookies.length; index++) {
+    let item = cookies[index]
     const options = {
       headers: {
         'Cookie': item,
@@ -24,17 +25,20 @@ const { cookie } = require('./cookie.js');
     const res = await request(url, 'POST', params, options)
     if(res.code == 0) {
       console.log('==========签到成功============')
-      mesage = `==========账号${index}签到成功============
-      ${JSON.stringify(res)}`
+      mesage += `==========账号${index + 1}签到成功============
+      ${JSON.stringify(res)}
+      `
     } else if (res.code == 40001) {
       console.log('===============登录失效，请重新登录================')
-      mesage = `=======账号${index}登录失效，请重新登录=========
-      ${JSON.stringify(res)}`
+      mesage += `=======账号${index + 1}登录失效，请重新登录=========
+      ${JSON.stringify(res)}
+      `
     } else {
       console.log('=============重复上报================')
-      mesage = `==========账号${index}重复上报============
-      ${JSON.stringify(res)}`
+      mesage += `==========账号${index + 1}重复上报============
+      ${JSON.stringify(res)}
+      `
     }
-  })
+  }
   await pushPlusNotify('签到日志', mesage)
 })()
