@@ -6,22 +6,9 @@ uestc_sign:
     - ./logs:/uestc_sign/logs
   environment:
     - REPO_URL=https://gitee.com/easyyyyy/uestc_sign.git
+    #校园健康填报小程序cookie，多账号用","隔开
+    #示例：
+    # COOKIE=JSESSIONID=xxx,JSESSIONID=XXX
     - COOKIE=
     #PUSHPLUS
     - PUSH_PLUS_TOKEN=
-    #填报信息，请如实填写
-    #当前地址
-    - CURRENT_ADDRESS=四川省成都市郫都区银杏大道
-    #是否接触武汉（0不是，1是）
-    - IS_CONTACT_WUHAN=0
-    #是否发烧
-    - IS_FEVER=0
-    #是否在校
-    - IS_IN_SCHOOL=1
-    #是否离开成都
-    - IS_LEAVE_CHENGDU=0
-    #当前体温
-    - TEMPERATURE=36°C~36.5°C
-    - PROVINCE=四川省
-    - CITY=成都市
-    - COUNTY=郫都区
