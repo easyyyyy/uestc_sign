@@ -13,26 +13,28 @@ const { cookie } = require('./cookie.js');
       "location":"四川省成都市郫都区科化一路23号"
     }
   }
-  console.log(params)
   const cookies = cookie.split(',')
-  console.log(cookies)
-  cookies.forEach(async (item) => {
+  const mesage = ''
+  cookies.forEach(async (item, index) => {
     const options = {
       headers: {
         'Cookie': item,
       }
     }
     const res = await request(url, 'POST', params, options)
-    console.log(res)
     if(res.code == 0) {
       console.log('==========签到成功============')
-      await pushPlusNotify('签到成功', '123')
+      mesage = `==========账号${index}签到成功============
+      ${JSON.stringify(res)}`
     } else if (res.code == 40001) {
       console.log('===============登录失效，请重新登录================')
-      await pushPlusNotify('cookie失效', 'cookie过期，请重新获取cookie填入cooke.js')
+      mesage = `=======账号${index}登录失效，请重新登录=========
+      ${JSON.stringify(res)}`
     } else {
-      console.log('=============其他错误================')
-      await pushPlusNotify('其他错误', JSON.stringify(res))
+      console.log('=============重复上报================')
+      mesage = `==========账号${index}重复上报============
+      ${JSON.stringify(res)}`
     }
   })
+  await pushPlusNotify('签到日志', mesage)
 })()
