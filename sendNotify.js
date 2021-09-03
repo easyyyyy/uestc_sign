@@ -1,4 +1,4 @@
-const { PUSH_PLUS_TOKEN } = require('./cookie.js')
+const { PUSH_PLUS_TOKEN, PUSH_PLUS_USER } = require('./cookie.js')
 const request = require('./axios.js');
 
 function pushPlusNotify(title, content) {
@@ -11,7 +11,7 @@ function pushPlusNotify(title, content) {
           token: `${PUSH_PLUS_TOKEN}`,
           title: `${title}`,
           content: `${content}`,
-          topic: ``
+          topic: `${PUSH_PLUS_USER}`
         }
       }
       const res = await request(`http://www.pushplus.plus/send`, 'post', params)

@@ -12,3 +12,5 @@ uestc_sign:
     - COOKIE=
     #PUSHPLUS
     - PUSH_PLUS_TOKEN=
+    #PUSHPLUS群组编号
+    - PUSH_PLUS_USER=

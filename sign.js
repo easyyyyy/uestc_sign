@@ -13,6 +13,8 @@ const { cookie } = require('./cookie.js');
       "location":"四川省成都市郫都区科化一路23号"
     }
   }
+  //sid中输入推送时需要通知的学号或姓名如：sid = ['张三', '李四']
+  const sid = ['0', '1']
   const cookies = cookie.split(',')
   let mesage = ''
   for(let index = 0; index<cookies.length; index++) {
@@ -25,17 +27,19 @@ const { cookie } = require('./cookie.js');
     const res = await request(url, 'POST', params, options)
     if(res.code == 0) {
       console.log('==========签到成功============')
-      mesage += `==========账号${index + 1}签到成功============
-      ${JSON.stringify(res)}
+      mesage += `==账号${sid[index]}签到成功==
       `
     } else if (res.code == 40001) {
       console.log('===============登录失效，请重新登录================')
-      mesage += `=======账号${index + 1}登录失效，请重新登录=========
-      ${JSON.stringify(res)}
+      mesage += `==账号${sid[index]}登录失效，请重新登录==
+      `
+    } else if (res.code == 50000) {
+      console.log('===============重复上报================')
+      mesage += `==账号${sid[index]}已打卡，请勿重复上报==
       `
     } else {
-      console.log('=============重复上报================')
-      mesage += `==========账号${index + 1}重复上报============
+      console.log('=============未知错误================')
+      mesage += `==========未知错误============
       ${JSON.stringify(res)}
       `
     }
