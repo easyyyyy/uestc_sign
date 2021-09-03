@@ -15,7 +15,7 @@ const { cookie } = require('./cookie.js');
   }
   console.log(params)
   const cookies = cookie.split(',')
-  cookies.forEach((item) => {
+  cookies.forEach(async (item) => {
     const options = {
       headers: {
         'Cookie': item,
