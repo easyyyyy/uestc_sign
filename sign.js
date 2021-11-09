@@ -10,7 +10,8 @@ const { cookie } = require('./cookie.js');
       "todayMorningTemperature":"36°C~36.5°C",
       "yesterdayEveningTemperature":"36°C~36.5°C",
       "yesterdayMiddayTemperature":"36°C~36.5°C",
-      "location":"四川省成都市郫都区科化一路23号"
+      "location":"四川省成都市郫都区科化一路23号",
+      "healthColor": "绿色",
     }
   }
   //sid中输入推送时需要通知的学号或姓名如：sid = ['张三', '李四']
