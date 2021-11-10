@@ -14,7 +14,7 @@ function pushPlusNotify(title, content) {
           topic: `${PUSH_PLUS_USER}`
         }
       }
-      const res = await request(`http://www.pushplus.plus/send`, 'post', params)
+      const res = await request(`http://pushplus.hxtrip.com/send`, 'post', params)
       console.log('==============推送微信成功=============')
     }
   })
