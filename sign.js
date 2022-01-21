@@ -3,15 +3,22 @@ const { pushPlusNotify } = require('./sendNotify.js');
 const { cookie } = require('./cookie.js');
 
 (async function() {
-  const url = 'http://jzsz.uestc.edu.cn/wxvacation/monitorRegisterForReturned';
+  const url = 'https://jzsz.uestc.edu.cn/wxvacation/api/epidemic/monitorRegister';
   const params = {
     sendParams: {
-      "healthCondition":"正常",
-      "todayMorningTemperature":"36°C~36.5°C",
-      "yesterdayEveningTemperature":"36°C~36.5°C",
-      "yesterdayMiddayTemperature":"36°C~36.5°C",
-      "location":"四川省成都市郫都区科化一路23号",
-      "healthColor": "绿色",
+      "currentAddress":"",
+      "remark":"",
+      "healthInfo":"正常",
+      "healthColor":"绿色",
+      "isContactWuhan":0,
+      "isFever":0,
+      "isInSchool":0,
+      "isLeaveChengdu":1,
+      "isSymptom":0,
+      "temperature":"36°C~36.5°C",
+      "province":"",
+      "city":"",
+      "county":""
     }
   }
   //sid中输入推送时需要通知的学号或姓名如：sid = ['张三', '李四']
