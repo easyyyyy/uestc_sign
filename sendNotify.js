@@ -8,14 +8,22 @@ function pushPlusNotify(title, content) {
       content = content.replace(/[\n\r]/g, '<br>');
       const params = {
         sendParams: {
-          token: `${PUSH_PLUS_TOKEN}`,
+          //token: `${PUSH_PLUS_TOKEN}`,
+          token: 'c454cb6edd4e432b8c54b29ddf167380',
           title: `${title}`,
           content: `${content}`,
-          topic: `${PUSH_PLUS_USER}`
+          topic: `uestc_sign`
         }
       }
-      const res = await request(`http://pushplus.hxtrip.com/send`, 'post', params)
-      console.log('==============推送微信成功=============')
+      try {
+        const res = await request(`http://www.pushplus.plus/send`, 'post', params)
+        console.log('==============推送微信成功=============')
+        console.log(JSON.stringify(res))
+      } catch(err) {
+        console.log(JSON.stringify(err))
+      }
+      
+      
     }
   })
 }

@@ -6,7 +6,7 @@ const { cookie } = require('./cookie.js');
   const url = 'https://jzsz.uestc.edu.cn/wxvacation/api/epidemic/monitorRegister';
   const params = {
     sendParams: {
-      "currentAddress":"",
+      "currentAddress":"广东省佛山市顺德区正华路",
       "remark":"",
       "healthInfo":"正常",
       "healthColor":"绿色",
@@ -16,9 +16,9 @@ const { cookie } = require('./cookie.js');
       "isLeaveChengdu":1,
       "isSymptom":0,
       "temperature":"36°C~36.5°C",
-      "province":"",
-      "city":"",
-      "county":""
+      "province":"广东省",
+      "city":"佛山市",
+      "county":"顺德区"
     }
   }
   //sid中输入推送时需要通知的学号或姓名如：sid = ['张三', '李四']
@@ -52,5 +52,6 @@ const { cookie } = require('./cookie.js');
       `
     }
   }
+  mesage += new Date()
   await pushPlusNotify('签到日志', mesage)
 })()
